@@ -1,0 +1,84 @@
+lib_name: bag_testbenches
+cell_name: mos_cascode
+pins: [ "d", "g", "s", "b", "c" ]
+instances:
+  XD:
+    lib_name: BAG_prim
+    cell_name: nmos4_standard
+    instpins:
+      S:
+        direction: inputOutput
+        net_name: "b"
+        num_bits: 1
+      D:
+        direction: inputOutput
+        net_name: "b"
+        num_bits: 1
+      B:
+        direction: inputOutput
+        net_name: "b"
+        num_bits: 1
+      G:
+        direction: inputOutput
+        net_name: "b"
+        num_bits: 1
+  XB:
+    lib_name: BAG_prim
+    cell_name: nmos4_standard
+    instpins:
+      S:
+        direction: inputOutput
+        net_name: "s"
+        num_bits: 1
+      D:
+        direction: inputOutput
+        net_name: "mid"
+        num_bits: 1
+      B:
+        direction: inputOutput
+        net_name: "b"
+        num_bits: 1
+      G:
+        direction: inputOutput
+        net_name: "g"
+        num_bits: 1
+  XC:
+    lib_name: BAG_prim
+    cell_name: nmos4_standard
+    instpins:
+      S:
+        direction: inputOutput
+        net_name: "mid"
+        num_bits: 1
+      D:
+        direction: inputOutput
+        net_name: "d"
+        num_bits: 1
+      B:
+        direction: inputOutput
+        net_name: "b"
+        num_bits: 1
+      G:
+        direction: inputOutput
+        net_name: "c"
+        num_bits: 1
+  PIN4:
+    lib_name: basic
+    cell_name: iopin
+    instpins: {}
+  PIN3:
+    lib_name: basic
+    cell_name: iopin
+    instpins: {}
+  PIN2:
+    lib_name: basic
+    cell_name: iopin
+    instpins: {}
+  PIN1:
+    lib_name: basic
+    cell_name: iopin
+    instpins: {}
+  PIN0:
+    lib_name: basic
+    cell_name: iopin
+    instpins: {}

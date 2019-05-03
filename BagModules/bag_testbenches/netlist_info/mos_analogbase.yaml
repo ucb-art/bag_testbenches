@@ -1,0 +1,60 @@
+lib_name: bag_testbenches
+cell_name: mos_analogbase
+pins: [ "d", "g", "s", "b" ]
+instances:
+  XD:
+    lib_name: BAG_prim
+    cell_name: nmos4_standard
+    instpins:
+      S:
+        direction: inputOutput
+        net_name: "b"
+        num_bits: 1
+      D:
+        direction: inputOutput
+        net_name: "b"
+        num_bits: 1
+      B:
+        direction: inputOutput
+        net_name: "b"
+        num_bits: 1
+      G:
+        direction: inputOutput
+        net_name: "b"
+        num_bits: 1
+  XM:
+    lib_name: BAG_prim
+    cell_name: nmos4_standard
+    instpins:
+      S:
+        direction: inputOutput
+        net_name: "s"
+        num_bits: 1
+      D:
+        direction: inputOutput
+        net_name: "d"
+        num_bits: 1
+      B:
+        direction: inputOutput
+        net_name: "b"
+        num_bits: 1
+      G:
+        direction: inputOutput
+        net_name: "g"
+        num_bits: 1
+  PIN3:
+    lib_name: basic
+    cell_name: iopin
+    instpins: {}
+  PIN2:
+    lib_name: basic
+    cell_name: iopin
+    instpins: {}
+  PIN1:
+    lib_name: basic
+    cell_name: iopin
+    instpins: {}
+  PIN0:
+    lib_name: basic
+    cell_name: iopin
+    instpins: {}

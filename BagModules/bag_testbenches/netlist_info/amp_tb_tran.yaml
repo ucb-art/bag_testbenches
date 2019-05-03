@@ -1,0 +1,96 @@
+lib_name: bag_testbenches
+cell_name: amp_tb_tran
+pins: [  ]
+instances:
+  VPWL:
+    lib_name: analogLib
+    cell_name: vpwlf
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "vin"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "VSS"
+        num_bits: 1
+  VSIN:
+    lib_name: analogLib
+    cell_name: vsin
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "ibias"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "VSS"
+        num_bits: 1
+  I5:
+    lib_name: analogLib
+    cell_name: gnd
+    instpins:
+      gnd!:
+        direction: inputOutput
+        net_name: "gnd!"
+        num_bits: 1
+  VGND:
+    lib_name: analogLib
+    cell_name: vdc
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "VSS"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "gnd!"
+        num_bits: 1
+  VSUP:
+    lib_name: analogLib
+    cell_name: vdc
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "VDD"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "VSS"
+        num_bits: 1
+  CLOAD:
+    lib_name: analogLib
+    cell_name: cap
+    instpins:
+      MINUS:
+        direction: inputOutput
+        net_name: "VSS"
+        num_bits: 1
+      PLUS:
+        direction: inputOutput
+        net_name: "vout"
+        num_bits: 1
+  XDUT:
+    lib_name: bag_testbenches
+    cell_name: amp_model
+    instpins:
+      VSS:
+        direction: inputOutput
+        net_name: "VSS"
+        num_bits: 1
+      VDD:
+        direction: inputOutput
+        net_name: "VDD"
+        num_bits: 1
+      vout:
+        direction: output
+        net_name: "vout"
+        num_bits: 1
+      vin:
+        direction: input
+        net_name: "vin"
+        num_bits: 1
+      ibias:
+        direction: input
+        net_name: "ibias"
+        num_bits: 1

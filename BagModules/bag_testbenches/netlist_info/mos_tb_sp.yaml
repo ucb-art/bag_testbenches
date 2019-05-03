@@ -1,0 +1,236 @@
+lib_name: bag_testbenches
+cell_name: mos_tb_sp
+pins: [  ]
+instances:
+  PORTS:
+    lib_name: analogLib
+    cell_name: port
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "vsac"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "gnd!"
+        num_bits: 1
+  PORTD:
+    lib_name: analogLib
+    cell_name: port
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "vdac"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "gnd!"
+        num_bits: 1
+  PORTG:
+    lib_name: analogLib
+    cell_name: port
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "vgac"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "gnd!"
+        num_bits: 1
+  CS:
+    lib_name: analogLib
+    cell_name: dcblock
+    instpins:
+      MINUS:
+        direction: inputOutput
+        net_name: "vs"
+        num_bits: 1
+      PLUS:
+        direction: inputOutput
+        net_name: "vsac"
+        num_bits: 1
+  CD:
+    lib_name: analogLib
+    cell_name: dcblock
+    instpins:
+      MINUS:
+        direction: inputOutput
+        net_name: "vd"
+        num_bits: 1
+      PLUS:
+        direction: inputOutput
+        net_name: "vdac"
+        num_bits: 1
+  CG:
+    lib_name: analogLib
+    cell_name: dcblock
+    instpins:
+      MINUS:
+        direction: inputOutput
+        net_name: "vg"
+        num_bits: 1
+      PLUS:
+        direction: inputOutput
+        net_name: "vgac"
+        num_bits: 1
+  LS:
+    lib_name: analogLib
+    cell_name: dcfeed
+    instpins:
+      MINUS:
+        direction: inputOutput
+        net_name: "vsdc"
+        num_bits: 1
+      PLUS:
+        direction: inputOutput
+        net_name: "vs"
+        num_bits: 1
+  LD:
+    lib_name: analogLib
+    cell_name: dcfeed
+    instpins:
+      MINUS:
+        direction: inputOutput
+        net_name: "vddc"
+        num_bits: 1
+      PLUS:
+        direction: inputOutput
+        net_name: "vd"
+        num_bits: 1
+  LG:
+    lib_name: analogLib
+    cell_name: dcfeed
+    instpins:
+      MINUS:
+        direction: inputOutput
+        net_name: "vgdc"
+        num_bits: 1
+      PLUS:
+        direction: inputOutput
+        net_name: "vg"
+        num_bits: 1
+  VBIAS:
+    lib_name: analogLib
+    cell_name: vdc
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "ibias"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "vs"
+        num_bits: 1
+  VB:
+    lib_name: analogLib
+    cell_name: vdc
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "vb"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "gnd!"
+        num_bits: 1
+  VS:
+    lib_name: analogLib
+    cell_name: vdc
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "vsdc"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "vb"
+        num_bits: 1
+  VD:
+    lib_name: analogLib
+    cell_name: vdc
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "vddc"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "vsdc"
+        num_bits: 1
+  VG:
+    lib_name: analogLib
+    cell_name: vdc
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "vgdc"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "vsdc"
+        num_bits: 1
+  I3:
+    lib_name: analogLib
+    cell_name: gnd
+    instpins:
+      gnd!:
+        direction: inputOutput
+        net_name: "gnd!"
+        num_bits: 1
+  I2:
+    lib_name: analogLib
+    cell_name: gnd
+    instpins:
+      gnd!:
+        direction: inputOutput
+        net_name: "gnd!"
+        num_bits: 1
+  I1:
+    lib_name: analogLib
+    cell_name: gnd
+    instpins:
+      gnd!:
+        direction: inputOutput
+        net_name: "gnd!"
+        num_bits: 1
+  I0:
+    lib_name: analogLib
+    cell_name: gnd
+    instpins:
+      gnd!:
+        direction: inputOutput
+        net_name: "gnd!"
+        num_bits: 1
+  IBIAS:
+    lib_name: analogLib
+    cell_name: idc
+    instpins:
+      PLUS:
+        direction: inputOutput
+        net_name: "ibias"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "vs"
+        num_bits: 1
+  XDUT:
+    lib_name: bag_testbenches
+    cell_name: mos_analogbase
+    instpins:
+      s:
+        direction: inputOutput
+        net_name: "vs"
+        num_bits: 1
+      d:
+        direction: inputOutput
+        net_name: "vd"
+        num_bits: 1
+      b:
+        direction: inputOutput
+        net_name: "vb"
+        num_bits: 1
+      g:
+        direction: inputOutput
+        net_name: "vg"
+        num_bits: 1

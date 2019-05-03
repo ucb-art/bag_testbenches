@@ -1,0 +1,104 @@
+lib_name: bag_testbenches
+cell_name: dut_wrapper_dm
+pins: [ "VDD", "VSS", "inac", "indc", "outac", "outdc" ]
+instances:
+  XDUT:
+    lib_name: bag_testbenches
+    cell_name: amp_model
+    instpins:
+      VSS:
+        direction: inputOutput
+        net_name: "VSS"
+        num_bits: 1
+      VDD:
+        direction: inputOutput
+        net_name: "VDD"
+        num_bits: 1
+      vout:
+        direction: output
+        net_name: "outac"
+        num_bits: 1
+      vin:
+        direction: input
+        net_name: "inp"
+        num_bits: 1
+      ibias:
+        direction: input
+        net_name: "inn"
+        num_bits: 1
+  PIN1:
+    lib_name: basic
+    cell_name: iopin
+    instpins: {}
+  PIN0:
+    lib_name: basic
+    cell_name: iopin
+    instpins: {}
+  PIN3:
+    lib_name: basic
+    cell_name: ipin
+    instpins: {}
+  PIN2:
+    lib_name: basic
+    cell_name: ipin
+    instpins: {}
+  PIN5:
+    lib_name: basic
+    cell_name: opin
+    instpins: {}
+  PIN4:
+    lib_name: basic
+    cell_name: opin
+    instpins: {}
+  XBAL:
+    lib_name: analogLib
+    cell_name: ideal_balun
+    instpins:
+      c:
+        direction: inputOutput
+        net_name: "indc"
+        num_bits: 1
+      d:
+        direction: inputOutput
+        net_name: "inac"
+        num_bits: 1
+      n:
+        direction: inputOutput
+        net_name: "inn"
+        num_bits: 1
+      p:
+        direction: inputOutput
+        net_name: "inp"
+        num_bits: 1
+  CLOAD:
+    lib_name: analogLib
+    cell_name: cap
+    instpins:
+      MINUS:
+        direction: inputOutput
+        net_name: "VSS"
+        num_bits: 1
+      PLUS:
+        direction: inputOutput
+        net_name: "outdc"
+        num_bits: 1
+  ECTRL:
+    lib_name: analogLib
+    cell_name: vcvs
+    instpins:
+      NC+:
+        direction: inputOutput
+        net_name: "outdc"
+        num_bits: 1
+      NC-:
+        direction: inputOutput
+        net_name: "VSS"
+        num_bits: 1
+      PLUS:
+        direction: inputOutput
+        net_name: "indc"
+        num_bits: 1
+      MINUS:
+        direction: inputOutput
+        net_name: "VSS"
+        num_bits: 1

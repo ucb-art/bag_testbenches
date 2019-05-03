@@ -1,0 +1,12 @@
+sim_env: 'tt'
+vdd: 1.0
+vtail: 0.15
+vgs_res: 5.0e-3
+gain_min: 4.0
+bw_min: 4.0e+9
+cload: 100.0e-15
+
+nch:
+  intent: standard
+pch:
+  intent: standard

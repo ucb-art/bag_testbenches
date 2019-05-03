@@ -1,0 +1,118 @@
+dut_lib: 'bag_serdes'
+dut_cell: 'diffamp'
+layout_package: 'serdes.layout.analog.amplifier'
+layout_class: 'DiffAmp'
+
+impl_lib: 'AAAFOO_DIFFAMP_PAPER'
+dsn_basename: 'DIFFAMP'
+
+rcx_params: {}
+view_name: 'netlist'
+
+root_dir: 'data/diffamp_paper'
+summary_fname: 'summary.yaml'
+
+routing_grid:
+  layers: [4, 5, 6, 7]
+  spaces: [0.100, 0.100, 0.100, 0.100]
+  widths: [0.100, 0.100, 0.100, 0.100]
+  bot_dir: 'x'
+
+sweep_params:
+  lch: [20.0e-9]
+
+layout_params:
+  lch: 20.0e-9
+  ptap_w: 6
+  ntap_w: 6
+  w_dict: {in: 4, load: 4, tail: 4}
+  th_dict: {in: 'standard', load: 'standard', tail: 'standard'}
+  seg_dict: {in: 4, load: 4, tail: 4}
+  fg_dum: 4
+  flip_out_sd: False
+  guard_ring_nf: 0
+  top_layer: !!null
+  show_pins: True
+  tr_widths:
+    bias: {4: 1}
+    out: {4: 1}
+    in: {4: 1}
+    tail: {4: 1}
+  tr_spaces:
+    bias: {4: 0}
+    out: {4: 1}
+    in: {4: 1}
+    tail: {4: 0}
+
+dut_wrappers:
+  - name: 'dm'
+    lib: 'bag_testbenches'
+    cell: 'dut_wrapper_dm'
+    params:
+      balun_list:
+        - !!python/tuple ['inac', 'indc', 'inp', 'inn']
+        - !!python/tuple ['outac', 'outdc', 'outp', 'outn']
+      cap_list:
+        - !!python/tuple ['outp', 'VSS', 'cload']
+        - !!python/tuple ['outn', 'VSS', 'cload']
+      vcvs_list:
+        - !!python/tuple ['bias_load', 'VSS', 'outdc', 'bias_outdc', {egain: 100, maxm: vdd, minm: 0}]
+      pin_list:
+        - !!python/tuple ['inac', 'input']
+        - !!python/tuple ['indc', 'input']
+        - !!python/tuple ['bias_outdc', 'input']
+        - !!python/tuple ['bias_tail', 'input']
+        - !!python/tuple ['outac', 'output']
+        - !!python/tuple ['outdc', 'output']
+      dut_conns:
+        inp: inp
+        inn: inn
+        bias_load: bias_load
+        bias_tail: bias_tail
+        outp: outp
+        outn: outn
+        VDD: VDD
+        VSS: VSS
+
+env_list: ['tt']
+
+measurements:
+  - meas_type: 'ac'
+    meas_package: 'verification.ac.amp'
+    meas_class: 'AmpCharAC'
+    out_fname: 'ac.yaml'
+    testbenches:
+      ac:
+        tb_package: 'verification.ac.core'
+        tb_class: 'ACTB'
+        tb_lib: 'bag_testbenches'
+        tb_cell: 'amp_tb_ac'
+        sch_params:
+          dut_conns:
+            inac: 'vin'
+            indc: 'vindc'
+            bias_outdc: 'voutdc_ref'
+            bias_tail: 'vtail'
+            outac: 'vout'
+            outdc: 'voutdc'
+          vbias_dict:
+            INDC: !!python/tuple ['vindc', 'VSS', 'vindc', {acm: '0'}]
+            INAC: !!python/tuple ['vin', 'VSS', '0', {acm: '1'}]
+            OUTDC: !!python/tuple ['voutdc_ref', 'VSS', 'voutdc', {acm: '0'}]
+            TAIL: !!python/tuple ['vtail', 'VSS', 'vtail', {acm: '0'}]
+          ibias_dict: {}
+          no_cload: True
+
+        wrapper_type: 'dm'
+        fstart: 1.0e+4
+        fstop: 1.0e+12
+        fndec: 50
+        sim_vars:
+          vdd: 1.0
+          vtail: 0.5
+          vindc: 0.5
+          voutdc: 0.5
+          cload: 1.0e-15
+        sim_vars_env: {}
+        sim_outputs:
+          vout: 'getData("/vout" ?result "ac")'
