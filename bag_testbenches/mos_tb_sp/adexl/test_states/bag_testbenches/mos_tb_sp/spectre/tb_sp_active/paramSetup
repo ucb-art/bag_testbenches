@@ -1,0 +1,7 @@
+"_DEXPR_1" (sp_freq fields "VAR(\"sp_freq\")")
+"_DEXPR_10" (dc_lin fields "VAR(\"vgs_num\")")
+"_DEXPR_2" (sp_start fields "VAR(\"vgs_start\")")
+"_DEXPR_3" (sp_stop fields "VAR(\"vgs_stop\")")
+"_DEXPR_4" (sp_lin fields "VAR(\"vgs_num\")")
+"_DEXPR_8" (dc_start fields "VAR(\"vgs_start\")")
+"_DEXPR_9" (dc_stop fields "VAR(\"vgs_stop\")")

@@ -1,0 +1,3 @@
+"_DEXPR_1" (noise_start fields "VAR(\"freq_start\")")
+"_DEXPR_2" (noise_stop fields "VAR(\"freq_stop\")")
+"_DEXPR_3" (noise_dec fields "VAR(\"num_per_dec\")")

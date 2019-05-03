@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<setupdb version="5">data
+	<active>Active Setup
+		<corners>
+			<corner enabled="1">_default</corner>
+		</corners>
+		<extensions>
+			<extension>Parasitics
+				<callback>_parSetupDBExtensionCB</callback>
+				<iconvalue></iconvalue>
+				<icontype></icontype>
+			</extension>
+		</extensions>
+		<currentmode>Single Run, Sweeps and Corners</currentmode>
+		<overwritehistory>0</overwritehistory>
+		<tests>
+			<test>tb_tran
+				<tool>ADE</tool>
+				<tooloptions>
+					<option>cell
+						<value>amp_tb_tran</value>
+					</option>
+					<option>lib
+						<value>bag_testbenches</value>
+					</option>
+					<option>sim
+						<value>spectre</value>
+					</option>
+					<option>view
+						<value>schematic</value>
+					</option>
+					<option>path
+						<value>$AXL_SETUPDB_DIR/test_states</value>
+					</option>
+					<option>state
+						<value>tb_tran_active</value>
+					</option>
+				</tooloptions>
+				<origoptions>
+					<option>cell
+						<value>amp_tb_tran</value>
+					</option>
+					<option>lib
+						<value>bag_testbenches</value>
+					</option>
+					<option>sim
+						<value>spectre</value>
+					</option>
+					<option>view
+						<value>schematic</value>
+					</option>
+				</origoptions>
+			</test>
+		</tests>
+		<vars>
+			<var>cload
+				<value></value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_tran</dependentTest>
+				</dependentTests>
+			</var>
+			<var>vamp
+				<value></value>
+				<dependentTests></dependentTests>
+			</var>
+			<var>vckdc
+				<value></value>
+				<dependentTests></dependentTests>
+			</var>
+			<var>vdd
+				<value></value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_tran</dependentTest>
+				</dependentTests>
+			</var>
+			<var>tsim
+				<value></value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_tran</dependentTest>
+				</dependentTests>
+			</var>
+			<var>tstep
+				<value></value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_tran</dependentTest>
+				</dependentTests>
+			</var>
+		</vars>
+	</active>
+	<history>History</history>
+</setupdb>

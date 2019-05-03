@@ -1,0 +1,3 @@
+"_DEXPR_11" (dc_start fields "VAR(\"vgs_start\")")
+"_DEXPR_12" (dc_stop fields "VAR(\"vgs_stop\")")
+"_DEXPR_13" (dc_lin fields "VAR(\"vgs_num\")")

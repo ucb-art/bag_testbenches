@@ -1,0 +1,5 @@
+"_DEXPR_4" (ac_start fields "VAR(\"fstart\")")
+"_DEXPR_5" (ac_stop fields "VAR(\"fstop\")")
+"_DEXPR_6" (ac_dec fields "VAR(\"fndec\")")
+"_DEXPR_7" (tran_stop fields "VAR(\"tsim\")")
+"_DEXPR_8" (tran_strobeperiod options "VAR(\"tstep\")")

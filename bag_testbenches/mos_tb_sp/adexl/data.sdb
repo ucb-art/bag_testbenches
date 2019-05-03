@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+<setupdb version="5">data
+	<active>Active Setup
+		<corners>
+			<corner enabled="1">_default</corner>
+		</corners>
+		<extensions>
+			<extension>Parasitics
+				<callback>_parSetupDBExtensionCB</callback>
+				<iconvalue></iconvalue>
+				<icontype></icontype>
+			</extension>
+		</extensions>
+		<currentmode>Single Run, Sweeps and Corners</currentmode>
+		<overwritehistory>0</overwritehistory>
+		<tests>
+			<test>tb_sp
+				<tool>ADE</tool>
+				<tooloptions>
+					<option>cell
+						<value>mos_tb_sp</value>
+					</option>
+					<option>lib
+						<value>bag_testbenches</value>
+					</option>
+					<option>sim
+						<value>spectre</value>
+					</option>
+					<option>view
+						<value>schematic</value>
+					</option>
+					<option>path
+						<value>$AXL_SETUPDB_DIR/test_states</value>
+					</option>
+					<option>state
+						<value>tb_sp_active</value>
+					</option>
+				</tooloptions>
+				<origoptions>
+					<option>cell
+						<value>mos_tb_sp</value>
+					</option>
+					<option>lib
+						<value>bag_testbenches</value>
+					</option>
+					<option>sim
+						<value>spectre</value>
+					</option>
+					<option>view
+						<value>schematic</value>
+					</option>
+				</origoptions>
+				<outputs>
+					<output>y11
+						<evalType>point</evalType>
+					</output>
+					<output>y13
+						<evalType>point</evalType>
+					</output>
+					<output>y12
+						<evalType>point</evalType>
+					</output>
+					<output>y21
+						<evalType>point</evalType>
+					</output>
+					<output>y22
+						<evalType>point</evalType>
+					</output>
+					<output>y23
+						<evalType>point</evalType>
+					</output>
+					<output>y31
+						<evalType>point</evalType>
+					</output>
+					<output>y32
+						<evalType>point</evalType>
+					</output>
+					<output>y33
+						<evalType>point</evalType>
+					</output>
+				</outputs>
+			</test>
+		</tests>
+		<vars>
+			<var>vb_dc
+				<value>0</value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_sp</dependentTest>
+				</dependentTests>
+			</var>
+			<var>vbs
+				<value>0.5</value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_sp</dependentTest>
+				</dependentTests>
+			</var>
+			<var>vds
+				<value>0.5</value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_sp</dependentTest>
+				</dependentTests>
+			</var>
+			<var>vgs
+				<value>0.5</value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_sp</dependentTest>
+				</dependentTests>
+			</var>
+			<var>sp_freq
+				<value>100</value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_sp</dependentTest>
+				</dependentTests>
+			</var>
+			<var>vgs_start
+				<value>0.2</value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_sp</dependentTest>
+				</dependentTests>
+			</var>
+			<var>vgs_stop
+				<value>0.5</value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_sp</dependentTest>
+				</dependentTests>
+			</var>
+			<var>vgs_num
+				<value>10</value>
+				<dependentTests>
+					<dependentTest enabled="1">tb_sp</dependentTest>
+				</dependentTests>
+			</var>
+		</vars>
+	</active>
+	<history>History</history>
+</setupdb>
