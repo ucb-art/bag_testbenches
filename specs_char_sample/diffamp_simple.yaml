@@ -1,6 +1,6 @@
-dut_lib: 'bag_serdes'
+dut_lib: 'bag_serdes_ec'
 dut_cell: 'diffamp'
-layout_package: 'serdes.layout.analog.amplifier'
+layout_package: 'serdes_ec.layout.analog.amplifier'
 layout_class: 'DiffAmp'
 
 impl_lib: 'AAAFOO_DIFFAMP_PAPER'

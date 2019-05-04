@@ -22,10 +22,6 @@ if TYPE_CHECKING:
 class MOSIdTB(TestbenchManager):
     """This class sets up the transistor drain current measurement testbench.
     """
-<<<<<<< HEAD
-=======
-
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
     def __init__(self,
                  data_fname,  # type: str
                  tb_name,  # type: str
@@ -35,12 +31,8 @@ class MOSIdTB(TestbenchManager):
                  env_list,  # type: Sequence[str]
                  ):
         # type: (...) -> None
-<<<<<<< HEAD
-        TestbenchManager.__init__(self, data_fname, tb_name, impl_lib, specs, sim_view_list, env_list)
-=======
         TestbenchManager.__init__(self, data_fname, tb_name, impl_lib, specs, sim_view_list,
                                   env_list)
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
 
     def setup_testbench(self, tb):
         # type: (Testbench) -> None
@@ -61,10 +53,7 @@ class MOSIdTB(TestbenchManager):
             tb.set_parameter('vgs_stop', 0.0)
 
     def get_vgs_range(self, data):
-<<<<<<< HEAD
-=======
         # type: (Dict[str, Any]) -> Tuple[float, float]
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
         ibias_min_fg = self.specs['ibias_min_fg']
         ibias_max_fg = self.specs['ibias_max_fg']
         vgs_res = self.specs['vgs_resolution']
@@ -116,10 +105,6 @@ class MOSIdTB(TestbenchManager):
 class MOSSPTB(TestbenchManager):
     """This class sets up the transistor S parameter measurement testbench.
     """
-<<<<<<< HEAD
-=======
-
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
     def __init__(self,
                  data_fname,  # type: str
                  tb_name,  # type: str
@@ -129,12 +114,8 @@ class MOSSPTB(TestbenchManager):
                  env_list,  # type: Sequence[str]
                  ):
         # type: (...) -> None
-<<<<<<< HEAD
-        TestbenchManager.__init__(self, data_fname, tb_name, impl_lib, specs, sim_view_list, env_list)
-=======
         TestbenchManager.__init__(self, data_fname, tb_name, impl_lib, specs, sim_view_list,
                                   env_list)
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
 
     def setup_testbench(self, tb):
         # type: (Testbench) -> None
@@ -144,28 +125,13 @@ class MOSSPTB(TestbenchManager):
         vds_num = self.specs['vds_num']
         vgs_num = self.specs['vgs_num']
         sp_freq = self.specs['sp_freq']
-<<<<<<< HEAD
-=======
         adjust_vbs_sign = self.specs.get('adjust_vbs_sign', True)
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
 
         vgs_start, vgs_stop = self.specs['vgs_range']
         is_nmos = self.specs['is_nmos']
 
         # handle VBS sign and set parameters.
         if isinstance(vbs_val, list):
-<<<<<<< HEAD
-            if is_nmos:
-                vbs_val = sorted((-abs(v) for v in vbs_val))
-            else:
-                vbs_val = sorted((abs(v) for v in vbs_val))
-            tb.set_sweep_parameter('vbs', values=vbs_val)
-        else:
-            if is_nmos:
-                vbs_val = -abs(vbs_val)
-            else:
-                vbs_val = abs(vbs_val)
-=======
             if adjust_vbs_sign:
                 print('adjusting vbs sign')
                 if is_nmos:
@@ -184,7 +150,6 @@ class MOSSPTB(TestbenchManager):
                 else:
                     vbs_val = abs(vbs_val)
             print('vbs value: {:.4g}'.format(vbs_val))
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
             tb.set_parameter('vbs', vbs_val)
 
         tb.set_parameter('vgs_num', vgs_num)
@@ -198,23 +163,16 @@ class MOSSPTB(TestbenchManager):
             tb.set_sweep_parameter('vds', values=vds_vals)
             tb.set_parameter('vb_dc', 0)
         else:
-<<<<<<< HEAD
-            vds_vals = np.linspace(-vds_max, -vds_min, vds_num + 1)
-=======
             if vds_max > vds_min:
                 print('vds_max = {:.4g} > {:.4g} = vds_min, flipping sign'.format(vds_max, vds_min))
                 vds_vals = np.linspace(-vds_max, -vds_min, vds_num + 1)
             else:
                 vds_vals = np.linspace(vds_min, vds_max, vds_num + 1)
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
             tb.set_sweep_parameter('vds', values=vds_vals)
             tb.set_parameter('vb_dc', abs(vgs_start))
 
     def get_ss_params(self, data):
-<<<<<<< HEAD
-=======
         # type: (Dict[str, Any]) -> Dict[str, Any]
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
         cfit_method = self.specs['cfit_method']
         sp_freq = self.specs['sp_freq']
         fg = self.specs['fg']
@@ -337,10 +295,7 @@ class MOSSPTB(TestbenchManager):
 class MOSNoiseTB(TestbenchManager):
     """This class sets up the transistor small-signal noise measurement testbench.
     """
-<<<<<<< HEAD
-=======
 
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
     def __init__(self,
                  data_fname,  # type: str
                  tb_name,  # type: str
@@ -350,12 +305,8 @@ class MOSNoiseTB(TestbenchManager):
                  env_list,  # type: Sequence[str]
                  ):
         # type: (...) -> None
-<<<<<<< HEAD
-        TestbenchManager.__init__(self, data_fname, tb_name, impl_lib, specs, sim_view_list, env_list)
-=======
         TestbenchManager.__init__(self, data_fname, tb_name, impl_lib, specs, sim_view_list,
                                   env_list)
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
 
     def setup_testbench(self, tb):
         # type: (Testbench) -> None
@@ -367,28 +318,13 @@ class MOSNoiseTB(TestbenchManager):
         freq_start = self.specs['freq_start']
         freq_stop = self.specs['freq_stop']
         num_per_dec = self.specs['num_per_dec']
-<<<<<<< HEAD
-=======
         adjust_vbs_sign = self.specs.get('adjust_vbs_sign', True)
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
 
         vgs_start, vgs_stop = self.specs['vgs_range']
         is_nmos = self.specs['is_nmos']
 
         # handle VBS sign and set parameters.
         if isinstance(vbs_val, list):
-<<<<<<< HEAD
-            if is_nmos:
-                vbs_val = sorted((-abs(v) for v in vbs_val))
-            else:
-                vbs_val = sorted((abs(v) for v in vbs_val))
-            tb.set_sweep_parameter('vbs', values=vbs_val)
-        else:
-            if is_nmos:
-                vbs_val = -abs(vbs_val)
-            else:
-                vbs_val = abs(vbs_val)
-=======
             if adjust_vbs_sign:
                 print('adjusting vbs sign')
                 if is_nmos:
@@ -407,7 +343,6 @@ class MOSNoiseTB(TestbenchManager):
                 else:
                     vbs_val = abs(vbs_val)
             print('vbs value: {:.4g}'.format(vbs_val))
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
             tb.set_parameter('vbs', vbs_val)
 
         tb.set_parameter('freq_start', freq_start)
@@ -464,17 +399,11 @@ class MOSNoiseTB(TestbenchManager):
         integ_noise_list = []
         for idx in range(len(corner_list)):
             noise_fun = LinearInterpolator(cur_points, idn[idx, ...], delta_list, extrapolate=True)
-<<<<<<< HEAD
-            integ_noise_list.append(noise_fun.integrate(fstart_log, fstop_log, axis=-1, logx=True, logy=True, raw=True))
-
-        gamma = np.array(integ_noise_list) / (4.0 * 1.38e-23 * temp * ss_data['gm'] * (fstop - fstart))
-=======
             integ_noise_list.append(
                 noise_fun.integrate(fstart_log, fstop_log, axis=-1, logx=True, logy=True, raw=True))
 
         gamma = np.array(integ_noise_list) / (
                     4.0 * 1.38e-23 * temp * ss_data['gm'] * (fstop - fstart))
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
         self.record_array(ss_data, data, gamma, 'gamma', new_swp_vars)
         return ss_data
 
@@ -508,11 +437,6 @@ class MOSCharSS(MeasurementManager):
         simulation environments list.
     """
 
-<<<<<<< HEAD
-    def __init__(self, data_dir, meas_name, impl_lib, specs, wrapper_lookup, sim_view_list, env_list):
-        # type: (str, str, str, Dict[str, Any], Dict[str, str], Sequence[Tuple[str, str]], Sequence[str]) -> None
-        MeasurementManager.__init__(self, data_dir, meas_name, impl_lib, specs, wrapper_lookup, sim_view_list, env_list)
-=======
     def __init__(self,
                  data_dir,  # type: str
                  meas_name,  # type: str
@@ -525,20 +449,12 @@ class MOSCharSS(MeasurementManager):
         # type: (...) -> None
         MeasurementManager.__init__(self, data_dir, meas_name, impl_lib, specs, wrapper_lookup,
                                     sim_view_list, env_list)
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
 
     def get_initial_state(self):
         # type: () -> str
         """Returns the initial FSM state."""
         return 'ibias'
 
-<<<<<<< HEAD
-    def get_testbench_info(self, state, prev_output):
-        # type: (str, Optional[Dict[str, Any]]) -> Tuple[str, str, Dict[str, Any], Optional[Dict[str, Any]]]
-
-        # add is_nmos parameter to testbench specification
-        tb_name, tb_type, tb_specs, tb_params = super(MOSCharSS, self).get_testbench_info(state, prev_output)
-=======
     def get_testbench_info(self,
                            state,  # type: str
                            prev_output,  # type: Optional[Dict[str, Any]]
@@ -548,7 +464,6 @@ class MOSCharSS(MeasurementManager):
         # add is_nmos parameter to testbench specification
         tmp = super(MOSCharSS, self).get_testbench_info(state, prev_output)
         tb_name, tb_type, tb_specs, tb_params = tmp
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
         tb_specs['is_nmos'] = self.specs['is_nmos']
         tb_specs['fg'] = self.specs['fg']
 
@@ -557,18 +472,12 @@ class MOSCharSS(MeasurementManager):
 
         return tb_name, tb_type, tb_specs, tb_params
 
-<<<<<<< HEAD
-    def process_output(self, state, data, tb_manager):
-        # type: (str, Dict[str, Any], Union[MOSIdTB, MOSSPTB, MOSNoiseTB]) -> Tuple[bool, str, Dict[str, Any]]
-=======
     def process_output(self,
                        state,  # type: str
                        data,  # type: Dict[str, Any]
                        tb_manager,  # type: Union[MOSIdTB, MOSSPTB, MOSNoiseTB]
                        ):
         # type: (...) -> Tuple[bool, str, Dict[str, Any]]
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
-
         ss_fname = os.path.join(self.data_dir, 'ss_params.hdf5')
         if state == 'ibias':
             done = False
@@ -598,12 +507,8 @@ class MOSCharSS(MeasurementManager):
             scale = self.specs.get('noise_integ_scale', 1.0)
 
             ss_params = load_sim_file(ss_fname)
-<<<<<<< HEAD
-            ss_params = tb_manager.get_integrated_noise(data, ss_params, temp, fstart, fstop, scale=scale)
-=======
             ss_params = tb_manager.get_integrated_noise(data, ss_params, temp, fstart, fstop,
                                                         scale=scale)
->>>>>>> 5d3857e0b426756420745617674cd42a03418fdf
             save_sim_results(ss_params, ss_fname)
 
             output = dict(ss_file=ss_fname)

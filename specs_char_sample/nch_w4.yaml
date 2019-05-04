@@ -1,6 +1,6 @@
 dut_lib: 'bag_testbenches'
 dut_cell: 'mos_analogbase'
-layout_package: 'abs_templates.mos_char'
+layout_package: 'abs_templates_ec.mos_char'
 layout_class: 'Transistor'
 
 impl_lib: 'AAAFOO_MOSCHAR_NCH'
