@@ -39,18 +39,23 @@ class MOSIdTB(TestbenchManager):
         vgs_max = self.specs['vgs_max']
         vgs_num = self.specs['vgs_num']
         is_nmos = self.specs['is_nmos']
+        vcs = self.specs.get('vcs', None)
 
         tb.set_parameter('vgs_num', vgs_num)
 
-        # handle VGS sign for nmos/pmos
+        # handle VGS sign and gate voltage of stacked transistor for nmos/pmos
         if is_nmos:
             tb.set_parameter('vs', 0.0)
             tb.set_parameter('vgs_start', 0.0)
             tb.set_parameter('vgs_stop', vgs_max)
+            if vcs:
+                tb.set_parameter('vcs', abs(vcs))
         else:
             tb.set_parameter('vs', vgs_max)
             tb.set_parameter('vgs_start', -vgs_max)
             tb.set_parameter('vgs_stop', 0.0)
+            if vcs:
+                tb.set_parameter('vcs', -abs(vcs))
 
     def get_vgs_range(self, data):
         # type: (Dict[str, Any]) -> Tuple[float, float]
@@ -126,6 +131,7 @@ class MOSSPTB(TestbenchManager):
         vgs_num = self.specs['vgs_num']
         sp_freq = self.specs['sp_freq']
         adjust_vbs_sign = self.specs.get('adjust_vbs_sign', True)
+        vcs = self.specs.get('vcs', None)
 
         vgs_start, vgs_stop = self.specs['vgs_range']
         is_nmos = self.specs['is_nmos']
@@ -157,11 +163,13 @@ class MOSSPTB(TestbenchManager):
 
         tb.set_parameter('vgs_start', vgs_start)
         tb.set_parameter('vgs_stop', vgs_stop)
-        # handle VDS/VGS sign for nmos/pmos
+        # handle VDS/VGS and gate of stacked transistor sign for nmos/pmos
         if is_nmos:
             vds_vals = np.linspace(vds_min, vds_max, vds_num + 1)
             tb.set_sweep_parameter('vds', values=vds_vals)
             tb.set_parameter('vb_dc', 0)
+            if vcs:
+                tb.set_parameter('vcs', abs(vcs))
         else:
             if vds_max > vds_min:
                 print('vds_max = {:.4g} > {:.4g} = vds_min, flipping sign'.format(vds_max, vds_min))
@@ -170,6 +178,8 @@ class MOSSPTB(TestbenchManager):
                 vds_vals = np.linspace(vds_min, vds_max, vds_num + 1)
             tb.set_sweep_parameter('vds', values=vds_vals)
             tb.set_parameter('vb_dc', abs(vgs_start))
+            if vcs:
+                tb.set_parameter('vcs', -abs(vcs))
 
     def get_ss_params(self, data):
         # type: (Dict[str, Any]) -> Dict[str, Any]
@@ -319,6 +329,7 @@ class MOSNoiseTB(TestbenchManager):
         freq_stop = self.specs['freq_stop']
         num_per_dec = self.specs['num_per_dec']
         adjust_vbs_sign = self.specs.get('adjust_vbs_sign', True)
+        vcs = self.specs.get('vcs', None)
 
         vgs_start, vgs_stop = self.specs['vgs_range']
         is_nmos = self.specs['is_nmos']
@@ -350,17 +361,22 @@ class MOSNoiseTB(TestbenchManager):
         tb.set_parameter('num_per_dec', num_per_dec)
 
         vgs_vals = np.linspace(vgs_start, vgs_stop, vgs_num + 1)
-        # handle VDS/VGS sign for nmos/pmos
+        # handle VDS/VGS and gate of stacked transistor sign for nmos/pmos
         if is_nmos:
             vds_vals = np.linspace(vds_min, vds_max, vds_num + 1)
             tb.set_sweep_parameter('vds', values=vds_vals)
             tb.set_sweep_parameter('vgs', values=vgs_vals)
             tb.set_parameter('vb_dc', 0)
+            if vcs:
+                tb.set_parameter('vcs', abs(vcs))
+
         else:
             vds_vals = np.linspace(-vds_max, -vds_min, vds_num + 1)
             tb.set_sweep_parameter('vds', values=vds_vals)
             tb.set_sweep_parameter('vgs', values=vgs_vals)
             tb.set_parameter('vb_dc', abs(vgs_start))
+            if vcs:
+                tb.set_parameter('vcs', -abs(vcs))
 
     def get_integrated_noise(self, data, ss_data, temp, fstart, fstop, scale=1.0):
         fg = self.specs['fg']
